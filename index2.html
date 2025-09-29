@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagen aleatoria de un gatito</title>
+</head>
+<body>
+    <h1>Hola Github</h1>
+    <p>Imagen aleatoria de una gatito</p>
+    <button id="btngato">Mostrar gato</button>
+    <img id="imgGato" width="300" alt="Imagen de un gato">
+    <script>
+        const btn = document.getElementById('btngato');
+        const img = document.getElementById('imgGato');
+        // Fetches a random cat image 
+        async function getGato() {
+            const res = await fetch("https://api.thecatapi.com/v1/images/search");
+            const data = await res.json();
+            img.src = data[0].url;
+        }
+        
+        btn.addEventListener('click', getGato);
+    </script>
+</body>
+</html>
